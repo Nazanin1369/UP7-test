@@ -142,4 +142,22 @@ $(function() {
 			done();
 		});
      });
+
+     /**
+      * Future development test suites
+      */
+      xdescribe('The menu items', function(){
+          it('should change background color on hover', function(){
+              var hovered = $($('.feed-list > li')[0].trigger('mouseover').html());
+              expect(hovered).toHaveCss({"background-color": "#008B1E"})
+          });
+      });
+
+      xdescribe('Feed Selection error handling', function(){
+          it('should throw an error if api call was not successful', function(){
+
+          });
+      });
+
+
 }());
