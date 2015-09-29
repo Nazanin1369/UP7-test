@@ -49,6 +49,8 @@ $(function() {
              _.each(allFeeds, function(feed){
                  expect(feed.name).toBeDefined();
                  expect(feed.name.length).not.toBeLessThan(1);
+                 expect(feed.name).not.toBeNull();
+				 expect(feed.name).not.toEqual('');
              });
          });
     });
@@ -104,30 +106,40 @@ $(function() {
      /* "New Feed Selection" */
     describe('New Feed Selection', function() {
 
-        /* getting the previous content to make sure it changes */
-         var prev_title,
-             prev_entry,
-             prev_color;
+       // Holds texts from each loaded feed entry
+		var textsArray = [];
 
-        beforeAll(function(done) {
-            // cache then call loadFeed on a subsequent feed
-            prev_title = $('.header-title').text(),
-            prev_entry = $('.entry').first().find('h2').text();
-            prev_color = $('.header').css('backgroundColor');
+		// First, we load two feeds and store their data in the textsArray
+		beforeEach(function(done) {
+			var data;
 
-            feed_index = (feed_index + 1 >= allFeeds.length)? 0 : feed_index + 1;
-            loadFeed(feed_index, done);
-        });
+			loadFeed(0, function() {
+				$entryNode = $('.entry');
+				data = $entryNode.text();
+				textsArray.push(data);
 
-        /* ensure when a new feed is loaded by the loadFeed
-        * function that the content actually changes.
-        */
-        it('should change feed content when a new feed is loaded', function() {
-            // check that the feed title has changed
-            expect($('.header-title').text()).not.toBe(prev_title);
-            // check that first feed entry changed
-            var new_entry = $('.entry').first().find('h2').text();
-            expect(new_entry).not.toBe(prev_entry);
-        });
+				loadFeed(1, function() {
+					$entryNode = $('.entry');
+					data = $entryNode.text();
+					textsArray.push(data);
+					done();
+				});
+			});
+		});
+
+		// Restores the default feed after the test is done
+		afterEach(function() {
+			loadFeed(0);
+		});
+
+		/* This spec tests if the data actually changes when a new feed is
+		 * loaded by the loadFeed function
+		 */
+		it ('should changes the data when feed is successfully loaded', function(done) {
+
+			// Checks that the data of the selected feeds are different
+			expect(textsArray[0]).not.toEqual(textsArray[1]);
+			done();
+		});
      });
 }());
