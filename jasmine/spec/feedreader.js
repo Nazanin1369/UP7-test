@@ -141,14 +141,14 @@ $(function() {
             expect($('.feed > a').hasClass('entry-link')).toBe(true);
         });
 
-        xit('should have a button to readMore', function(){
+        it('should have a button to readMore', function(){
             expect($('.entry > button').text()).ToEqual('readMore');
         });
     });
 
 
       /* "Menu item" test suite */
-      xdescribe('Menu-item', function() {
+      describe('Menu-item', function() {
 
           /**
            * It ensure the menu background color
