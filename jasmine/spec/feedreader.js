@@ -14,7 +14,7 @@ $(function() {
          * allFeeds variable has been defined and that it is not
          * empty.
          */
-        it('are defined', function() {
+        it('should be defined', function() {
             expect(allFeeds).toBeDefined();
             expect(allFeeds.length).not.toBe(0);
         });
@@ -33,7 +33,7 @@ $(function() {
         /* It ensures allFeeds has a name defined
          * and that the name is not empty.
          */
-         it('should have a name', function(){
+         it('should have associated name', function(){
              _.each(allFeeds, function(feed){
                  expect(feed.name).toBeDefined();
                  expect(feed.name.length).not.toBeLessThan(1);
@@ -137,7 +137,7 @@ $(function() {
         /**
          * It ensures all entry links have "entry-link" class
          */
-        it('a tag has feed-list class', function() {
+        it('should have a tag with feed-list class', function() {
             expect($('.feed > a').hasClass('entry-link')).toBe(true);
         });
 
@@ -148,7 +148,7 @@ $(function() {
 
 
       /* "Menu item" test suite */
-      xdescribe('menu item', function() {
+      xdescribe('Menu-item', function() {
 
           /**
            * It ensure the menu background color
