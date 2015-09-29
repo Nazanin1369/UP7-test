@@ -3,26 +3,16 @@
  * This is the spec file that Jasmine will read and contains
  * all of the tests that will be run against your application.
  */
-
-/* We're placing all of our tests within the $() function,
- * since some of these tests may require DOM elements. We want
- * to ensure they don't run until the DOM is ready.
- */
 $(function() {
-    /* This is our first test suite - a test suite just contains
-    * a related set of tests. This suite is all about the RSS
-    * feeds definitions, the allFeeds variable in our application.
-    */
+
     var feed_index = 0, // defaults to first feed at index 0
         feed_list = $('.feed-list a'),
         feed_entries = $('.feed');
     describe('RSS Feeds', function() {
-        /* This is our first test - it tests to make sure that the
+
+        /* It ensures that the
          * allFeeds variable has been defined and that it is not
-         * empty. Experiment with this before you get started on
-         * the rest of this project. What happens when you change
-         * allFeeds in app.js to be an empty array and refresh the
-         * page?
+         * empty.
          */
         it('are defined', function() {
             expect(allFeeds).toBeDefined();
@@ -30,9 +20,8 @@ $(function() {
         });
 
 
-        /* TODO: Write a test that loops through each feed
-         * in the allFeeds object and ensures it has a URL defined
-         * and that the URL is not empty.
+        /* It ensures it has a URL defined
+         * and that the URL is not empty in allFeeds
          */
          it('should have associated url', function(){
              _.each(allFeeds, function(feed){
@@ -41,8 +30,7 @@ $(function() {
          });
 
 
-        /* TODO: Write a test that loops through each feed
-         * in the allFeeds object and ensures it has a name defined
+        /* It ensures allFeeds has a name defined
          * and that the name is not empty.
          */
          it('should have a name', function(){
@@ -56,24 +44,21 @@ $(function() {
     });
 
 
-    /* TODO: Write a new test suite named "The menu" */
+    /* Menu related test suite */
     describe('The menu', function() {
-        /* TODO: Write a test that ensures the menu element is
-         * hidden by default. You'll have to analyze the HTML and
-         * the CSS to determine how we're performing the
-         * hiding/showing of the menu element.
-         */
+
          var body = $('body'),
 			 hamIcon = $('.menu-icon-link');
 
+         /* It ensures the menu element is
+         * hidden by default.
+         */
          it('should be hidden by default', function(){
              expect(body.hasClass('menu-hidden')).toBe(true);
          });
 
-         /* TODO: Write a test that ensures the menu changes
-          * visibility when the menu icon is clicked. This test
-          * should have two expectations: does the menu display when
-          * clicked and does it hide when clicked again.
+         /* It ensures the menu changes
+          * visibility when the menu icon is clicked.
           */
           it('should change visibility when menu button is clicked', function(){
             hamIcon.click();
@@ -83,7 +68,7 @@ $(function() {
          });
     });
 
-    /* TODO: Write a new test suite named "Initial Entries" */
+    /* "Initial Entries" test suite*/
     describe('Initial Entries', function() {
 
         beforeEach(function(done) {
@@ -93,7 +78,7 @@ $(function() {
             loadFeed(feed_index, done);
         });
 
-        /* ensure when the loadFeed function is called and
+        /* It ensure when the loadFeed function is called and
         * completes its work, there is at least 1 entry
         */
         it('should have 1 or more entries after loadFeed completes', function(done) {
@@ -132,7 +117,7 @@ $(function() {
 			loadFeed(0);
 		});
 
-		/* This spec tests if the data actually changes when a new feed is
+		/* It ensures data actually changes when a new feed is
 		 * loaded by the loadFeed function
 		 */
 		it ('should changes the data when feed is successfully loaded', function(done) {
@@ -143,21 +128,40 @@ $(function() {
 		});
      });
 
-     /**
-      * Future development test suites
-      */
-      xdescribe('The menu items', function(){
+
+     /******* Additional & Future test suites *******/
+
+      /* "Entry link" test suite */
+    describe('Entry-link', function() {
+
+        /**
+         * It ensures all entry links have "entry-link" class
+         */
+        it('a tag has feed-list class', function() {
+            expect($('.feed > a').hasClass('entry-link')).toBe(true);
+        });
+
+        xit('should have a button to readMore', function(){
+            expect($('.entry > button').text()).ToEqual('readMore');
+        });
+    });
+
+
+      /* "Menu item" test suite */
+      xdescribe('menu item', function() {
+
+          /**
+           * It ensure the menu background color
+           * will change on hover
+           */
           it('should change background color on hover', function(){
               var hovered = $($('.feed-list > li')[0].trigger('mouseover').html());
               expect(hovered).toHaveCss({"background-color": "#008B1E"})
           });
       });
 
-      xdescribe('Feed Selection error handling', function(){
-          it('should throw an error if api call was not successful', function(){
 
-          });
-      });
+
 
 
 }());
