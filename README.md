@@ -15,24 +15,24 @@ The goal of this Udacity project is to become familiar with the Jasmine developm
 	|--	README.md
 
 #### How to run?
-	* view online here :
+	* view online here : http://nazanin1369.github.io/UP7-test
 	 		OR
 	* Open "index.html" file in your browser
 
 #### Test Suites
-	* RSS Feeds
-		* should be defined - GREEN
-		* should have associated url - GREEN
-		* should have associated name - GREEN
-	* The menu
-		* should be hidden by default - GREEN
-		* should change visibility when menu button is clicked - GREEN
-	* Initial Entries
-		* should have 1 or more entries after loadFeed completes - GREEN
-	* New Feed Selection
-		* should changes the data when feed is successfully loaded - GREEN
-	* Entry-link
-		* should have a tag with feed-list class - GREEN
-		* should have a button to readMore - RED / FUTURE DEVELOPMENT
-	* Menu-item
-		* should change background color on hover - RED / FUTURE DEVELOPMENT
+* RSS Feeds
+	* should be defined - GREEN
+	* should have associated url - GREEN
+	* should have associated name - GREEN
+* The menu
+	* should be hidden by default - GREEN
+	* should change visibility when menu button is clicked - GREEN
+* Initial Entries
+	* should have 1 or more entries after loadFeed completes - GREEN
+* New Feed Selection
+	* should changes the data when feed is successfully loaded - GREEN
+* Entry-link
+	* should have a tag with feed-list class - GREEN
+	* should have a button to readMore - RED / FUTURE DEVELOPMENT
+* Menu-item
+	* should change background color on hover - RED / FUTURE DEVELOPMENT
